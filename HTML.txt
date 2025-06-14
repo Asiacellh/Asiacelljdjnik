@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل Asiacell للمراهنات - خدمة الإيداع الإلكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c2461, #1e3799, #0c2461);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            right: 10%;
+        }
+        
+        header {
+            background: linear-gradient(to right, #0a3d62, #1a237e);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #FFD700;
+            overflow: hidden;
+        }
+        
+        .logo {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fff;
+            box-shadow: 0 0 25px rgba(30, 144, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s infinite;
+            z-index: 2;
+        }
+        
+        .logo i {
+            font-size: 55px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #FFD700;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: #87CEFA;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .promo-image {
+            width: 90%;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .transfer-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            margin: 25px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .transfer-details h2 {
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+            font-size: 18px;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #87CEFA;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-value {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 20px;
+        }
+        
+        .example-box {
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px dashed #FFD700;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .example-box p {
+            margin-bottom: 15px;
+            color: #87CEFA;
+        }
+        
+        .example-box code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 15px 0;
+            font-family: monospace;
+            color: #00FA9A;
+            font-size: 22px;
+            border: 1px solid rgba(0, 250, 154, 0.3);
+            direction: ltr;
+        }
+        
+        .form-section {
+            padding: 0 30px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #87CEFA;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1e90ff;
+            font-size: 24px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 18px 20px 18px 60px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #00BFFF;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+            background: rgba(0, 191, 255, 0.15);
+        }
+        
+        .file-upload {
+            background: rgba(255, 215, 0, 0.12);
+            border: 3px dashed #FFD700;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .file-upload:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .file-upload i {
+            font-size: 60px;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .file-upload p {
+            color: #FFD700;
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        
+        #fileName {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #00FA9A;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to right, #006400, #228B22);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+            z-index: 2;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.6s;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #008000, #32CD32);
+        }
+        
+        .btn:active {
+            transform: translateY(2px);
+        }
+        
+        .btn i {
+            margin-left: 15px;
+        }
+        
+        .success-message {
+            background: rgba(46, 213, 115, 0.25);
+            border: 2px solid #32CD32;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px;
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .success-message i {
+            font-size: 60px;
+            color: #32CD32;
+            margin-bottom: 25px;
+            animation: bounce 1.2s infinite;
+        }
+        
+        .success-message p {
+            font-size: 24px;
+            line-height: 1.7;
+            margin: 15px 0;
+            color: #F0FFF0;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            border-top: 2px solid rgba(255, 215, 0, 0.2);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .support-link {
+            display: inline-block;
+            background: linear-gradient(to right, #1e3799, #4a69bd);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .support-link:hover {
+            background: linear-gradient(to right, #4a69bd, #1e3799);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hint {
+            background: rgba(138, 43, 226, 0.2);
+            border-left: 5px solid #9370DB;
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 0 15px 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(to right, #FF4500, #FF6347);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 650px) {
+            .container {
+                margin: 15px;
+            }
+            
+            header {
+                padding: 25px 15px;
+            }
+            
+            header h1 {
+                font-size: 28px;
+            }
+            
+            .header-subtitle {
+                font-size: 16px;
+            }
+            
+            .transfer-details {
+                padding: 20px;
+                margin: 15px;
+            }
+            
+            .transfer-details h2 {
+                font-size: 24px;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .example-box {
+                padding: 15px;
+                font-size: 18px;
+            }
+            
+            .example-box code {
+                font-size: 18px;
+                padding: 10px 15px;
+            }
+            
+            .form-section {
+                padding: 0 20px 20px;
+            }
+            
+            .form-group label {
+                font-size: 18px;
+            }
+            
+            .form-control {
+                padding: 15px 15px 15px 50px;
+                font-size: 18px;
+            }
+            
+            .file-upload {
+                padding: 20px;
+            }
+            
+            .file-upload p {
+                font-size: 18px;
+            }
+            
+            .promo-image {
+                height: 150px;
+            }
+            
+            .btn {
+                padding: 18px;
+                font-size: 20px;
+            }
+            
+            .success-message p {
+                font-size: 20px;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(30, 144, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+            </div>
+            <h1>تحويل Asiacell <span class="badge">للمراهنات</span></h1>
+            <p class="header-subtitle">خدمة إيداع فورية وآمنة لرصيد المراهنات عبر تحويل Asiacell</p>
+        </header>
+        
+        <!-- الصورة المضافة فوق قسم التحويل -->
+        <div class="promo-image">
+            <img src="https://baghdadtoday.news/uploads/posts/MediaStorage/GalleryImages/77722.jpg" alt="Asiacell Deposit Banner">
+        </div>
+        
+        <div class="transfer-details">
+            <h2><i class="fas fa-info-circle"></i> معلومات التحويل الأساسية</h2>
+            
+            <div class="detail-item">
+                <span class="detail-label">
+                    <i class="fas fa-mobile-alt"></i> رقم التحويل:
+                </span>
+                <span class="detail-value">07704121345</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">
+                    <i class="fas fa-arrow-down"></i> الحد الأدنى:
+                </span>
+                <span class="detail-value">5,000 QI</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">
+                    <i class="fas fa-arrow-up"></i> الحد الأقصى:
+                </span>
+                <span class="detail-value">60,000 QI</span>
+            </div>
+            
+            <div class="hint">
+                <i class="fas fa-lightbulb"></i>
+                <span>تأكد من إدخال الرقم الصحيح والتحقق من المبلغ قبل الإرسال. العمليات غير الصحيحة لن يتم معالجتها.</span>
+            </div>
+            
+            <div class="example-box">
+                <p><i class="fas fa-code"></i> مثال توضيحي للتحويل:</p>
+                <code>07704121345#1#*5000*123*</code>
+                <p>حيث <span class="highlight">5000</span> هو المبلغ بالدينار العراقي</p>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="phone">
+                    <i class="fas fa-phone-volume"></i> الرقم الذي تم التحويل منه
+                </label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="tel" id="phone" class="form-control" placeholder="أدخل رقم الهاتف الذي أجرى التحويل">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="screenshot">
+                    <i class="fas fa-camera-retro"></i> رفع صورة إثبات التحويل (سكرين شوت)
+                </label>
+                <div class="file-upload" id="uploadArea">
+                    <i class="fas fa-file-image"></i>
+                    <p>انقر لرفع صورة السكرين شوت</p>
+                    <p>أو اسحب الصورة هنا</p>
+                    <div id="fileName"></div>
+                </div>
+                <input type="file" id="screenshot" accept="image/*" style="display: none;">
+            </div>
+            
+            <button class="btn" id="confirmBtn">
+                <i class="fas fa-check-double"></i> تأكيد العملية
+            </button>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i>
+            <p class="highlight">تم إنشاء طلبك بنجاح!</p>
+            <p>انتظر لحين إضافة المبلغ إلى حسابك في البوت</p>
+            <p>سيتم إعلامك عند اكتمال العملية خلال دقائق</p>
+        </div>
+        
+        <footer>
+            <p>© 2023 خدمة تحويل Asiacell للمراهنات. جميع الحقوق محفوظة</p>
+            <p>للدعم الفني والاستفسارات:</p>
+            <a href="https://t.me/technicalsupporBOT" class="support-link" target="_blank">
+                <i class="fab fa-telegram"></i> تواصل مع الدعم الفني
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('screenshot');
+            const fileName = document.getElementById('fileName');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Handle file upload
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.background = 'rgba(255, 215, 0, 0.25)';
+                uploadArea.style.transform = 'scale(1.02)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.background = 'rgba(255, 215, 0, 0.12)';
+                uploadArea.style.transform = 'scale(1)';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.background = 'rgba(255, 215, 0, 0.12)';
+                uploadArea.style.transform = 'scale(1)';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    updateFileName();
+                }
+            });
+            
+            fileInput.addEventListener('change', updateFileName);
+            
+            function updateFileName() {
+                if (fileInput.files.length > 0) {
+                    fileName.textContent = `تم اختيار: ${fileInput.files[0].name}`;
+                    fileName.style.color = '#00FA9A';
+                    fileName.innerHTML += ' <i class="fas fa-check-circle"></i>';
+                }
+            }
+            
+            // Confirm button functionality
+            confirmBtn.addEventListener('click', function() {
+                const phone = document.getElementById('phone').value;
+                
+                if (!phone) {
+                    alert('الرجاء إدخال الرقم الذي تم التحويل منه');
+                    return;
+                }
+                
+                if (!fileInput.files.length) {
+                    alert('الرجاء رفع صورة إثبات التحويل');
+                    return;
+                }
+                
+                // Show processing animation
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري معالجة طلبك...';
+                this.disabled = true;
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    successMessage.style.display = 'block';
+                    this.style.display = 'none';
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Reset form after success
+                    document.getElementById('phone').value = '';
+                    fileInput.value = '';
+                    fileName.textContent = '';
+                    
+                    // Reset button after 5 seconds (in case user wants to make another transfer)
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                        this.style.display = 'block';
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>
